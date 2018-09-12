@@ -538,3 +538,104 @@ $ node es5-output-009-template-literals.js
 hey folks
 $
 </code></pre>
+
+So far you've shown me some nifty individual plugins. is there a away to get a bunch of common ones?
+
+There are a few out there. One is called [Env](https://babeljs.io/docs/en/babel-preset-env.html#usebuiltins)
+
+<pre><code class="language-bash">
+$ npm install --save-dev @babel/preset-env
+
+</code></pre>
+
+
+Now you can just references it as your preset in .babelrc:
+
+<pre><code class="language-json">
+{
+  "presets": [
+    [
+      "@babel/preset-env",
+      {
+        "targets": {
+          "esmodules": true
+        }
+      }
+    ]
+  ]
+}
+
+
+</code></pre>
+
+
+
+
+<pre><code class="language-bash">
+$ npm install --save-dev @babel/preset-env
+
+</code></pre>
+
+
+Now you can just references it as your preset in .babelrc:
+
+<pre><code class="language-json">
+{
+  "presets": [
+    [
+      "@babel/preset-env",
+      {
+        "targets": {
+          "esmodules": true
+        }
+      }
+    ]
+  ]
+}
+
+
+</code></pre>
+
+
+
+
+<pre><code class="language-bash">
+$ cat package.json | grep -i build0101 -B 1
+  "scripts": {
+    "build0101": "babel ./src/ch01-01 --out-dir dist/ch01-01 #comment: first script we're running.#"
+$ npm run build0101
+
+> babel-test@1.0.0 build0101 /home/yuvilio/ws/apps/node/books/modern-js-tools/babel-test
+> babel ./src/ch01-01 --out-dir dist/ch01-01 #comment: first script we're running.#
+
+Successfully compiled 1 file with Babel.
+$
+</code></pre>
+
+it transforms this:
+
+<pre><code class="language-js">
+let a = 1;
+let b = 2;
+[a, b]= [b, a]; // swap values via destructuring
+console.log('a: ', a);
+console.log('b: ', b);
+
+</code></pre>
+
+into this:
+
+<pre><code class="language-bash">
+
+$ cat dist/ch01-01/main.js
+"use strict";
+
+let a = 1;
+let b = 2;
+var _ref = [b, a];
+a = _ref[0];
+b = _ref[1];
+// swap values via destructuring
+console.log('a: ', a);
+console.log('b: ', b);
+</code></pre>_

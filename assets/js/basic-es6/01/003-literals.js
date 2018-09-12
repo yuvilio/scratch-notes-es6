@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', function (event) {
       name,
       title
     }
-    console.log(crewman) // {name: "Stellar", title: "Executive Offer"}
+    console.log('crewman, ', crewman) // {name: "Stellar", title: "Executive Offer"}
   }
 
   {
